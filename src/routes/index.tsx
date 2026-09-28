@@ -60,11 +60,11 @@ function Index() {
       {menuOpen && <nav aria-label="Menu móvel" className="flex flex-col border-t border-hero-foreground/20 bg-hero px-6 py-5 lg:hidden">{nav.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="border-b border-hero-foreground/15 py-3 text-sm font-bold uppercase text-hero-foreground">{item.label}</a>)}</nav>}
     </header>
 
-    <section className="relative min-h-[760px] bg-hero text-hero-foreground md:min-h-[740px] lg:h-[min(820px,93vh)]">
+    <section className="relative min-h-[710px] bg-hero text-hero-foreground md:min-h-[740px] lg:h-[min(820px,93vh)]">
       <img src={between.url} alt="Carga suspensa entre edifícios durante operação de içamento" className="absolute inset-0 h-full w-full object-cover object-[52%_center] lg:object-[center_42%]" />
       <div className="absolute inset-0 bg-gradient-to-r from-hero via-hero/80 to-hero/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-hero/75 via-transparent to-hero/20" />
-      <div className="relative mx-auto flex min-h-[760px] max-w-[1440px] flex-col justify-end px-5 pb-24 pt-36 md:min-h-[740px] md:px-10 md:pb-28 lg:h-full lg:px-16 lg:pb-32">
+      <div className="relative mx-auto flex min-h-[710px] max-w-[1440px] flex-col justify-end px-5 pb-12 pt-28 md:min-h-[740px] md:px-10 md:pb-28 lg:h-full lg:px-16 lg:pb-32">
         <div className="max-w-[810px]">
           <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> IÇAMENTO DE CARGAS</div>
           <h1 className="heading-display max-w-[870px] text-[clamp(4rem,9vw,8.6rem)]">O DESAFIO É<br /><span className="text-signal">NOSSO.</span><br />A SOLUÇÃO<br />TAMBÉM.</h1>
@@ -78,7 +78,7 @@ function Index() {
       <div className="absolute bottom-0 right-0 hidden bg-signal px-9 py-5 text-signal-foreground md:flex md:items-center md:gap-8"><span className="font-display text-2xl font-bold uppercase">A altura não é limite.</span><ArrowUpRight className="h-5 w-5" /></div>
     </section>
 
-    <section id="sobre" className="scroll-mt-10 bg-background py-20 md:py-28">
+    <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[500px] text-[clamp(3.5rem,6vw,6.3rem)]">QUANDO A CARGA É COMPLEXA, <span className="text-primary">A RESPOSTA É PRECISA.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10"><p className="max-w-[610px] text-xl leading-[1.6] text-foreground md:text-2xl">Cada operação tem sua própria escala, seus próprios desafios e um único caminho: fazer acontecer com planejamento e cuidado.</p><p className="mt-6 max-w-[540px] text-base leading-7 text-muted-foreground">Na Isale Içamentos, transformamos desafios de acesso e movimentação em soluções para o seu projeto. De equipamentos volumosos a peças delicadas, nosso foco está em cada etapa da operação.</p><a href="#solucoes" className="mt-8 inline-flex items-center gap-2 self-start border-b-2 border-signal pb-2 text-xs font-bold uppercase tracking-[.12em] text-primary">Conheça as soluções <ArrowRight size={17} /></a></div>
