@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Instagram, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/isale-logo.png.asset.json";
+import logo from "@/assets/isale-logo-vector.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
 import equipment from "@/assets/icamento-equipamento-predio.jpeg.asset.json";
 import glass from "@/assets/icamento-fachada-vidro.jpeg.asset.json";
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/")({
 
 function Brand() {
   return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center">
-    <img src={logo.url} alt="Isale Içamentos" className="brand-mark h-20 w-auto md:h-24" />
+    <img src={logo.url} alt="Isale Içamentos" className="brand-mark h-24 w-auto md:h-28" />
   </a>;
 }
 
@@ -97,7 +97,7 @@ function Index() {
 
     <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
-        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[620px] text-[clamp(3.5rem,6vw,6.3rem)]">REFERÊNCIA EM IÇAMENTO SEGURO E <span className="text-primary">SOLUÇÕES SOB MEDIDA PARA TRANSPORTE DE MÓVEIS E CARGAS ESPECIAIS.</span></h2></div>
+        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[620px] text-[clamp(3.5rem,6vw,6.3rem)]">REFERÊNCIA EM <span className="text-primary">IÇAMENTO SEGURO.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
           <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Na ISALE, compreendemos que cada projeto é único e requer soluções personalizadas. Nossa equipe é formada por profissionais altamente treinados e experientes, que entendem a importância do seu projeto. Estamos prontos para atender você, desde o içamento mais simples até o mais complexo.</p>
           <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
