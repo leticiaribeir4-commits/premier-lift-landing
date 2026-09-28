@@ -56,8 +56,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Brand() {
-  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center">
-    <img src={logo.url} alt="Isale Içamentos" className="h-16 w-auto md:h-[4.5rem]" />
+  return <a href="#inicio" aria-label="Isale Içamentos — início" className="brand-mark inline-flex shrink-0 items-center">
+    <img src={logo.url} alt="Isale Içamentos" className="h-20 w-auto md:h-24" />
   </a>;
 }
 
@@ -65,7 +65,7 @@ function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   return <main id="inicio" className="overflow-hidden">
     <header className="absolute inset-x-0 top-0 z-30 border-b border-hero-foreground/20">
-      <div className="mx-auto flex h-[92px] max-w-[1440px] items-center justify-between px-5 md:h-[104px] md:px-10 lg:px-16">
+      <div className="mx-auto flex h-[108px] max-w-[1440px] items-center justify-between px-5 md:h-[120px] md:px-10 lg:px-16">
         <Brand />
         <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
           {nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase tracking-[.12em] text-hero-foreground/80 transition-colors hover:text-signal">{item.label}</a>)}
