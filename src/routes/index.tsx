@@ -56,8 +56,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Brand() {
-  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center bg-card px-3 py-1.5 shadow-sm">
-    <img src={logo.url} alt="Isale Içamentos" className="h-20 w-auto md:h-24" />
+  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center">
+    <img src={logo.url} alt="Isale Içamentos" className="brand-mark h-20 w-auto md:h-24" />
   </a>;
 }
 
@@ -97,9 +97,9 @@ function Index() {
 
     <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
-        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[560px] text-[clamp(3.5rem,6vw,6.3rem)]">CUIDADO E PRECISÃO <span className="text-primary">EM CADA IÇAMENTO.</span></h2></div>
+        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[620px] text-[clamp(3.5rem,6vw,6.3rem)]">REFERÊNCIA EM IÇAMENTO SEGURO E <span className="text-primary">SOLUÇÕES SOB MEDIDA PARA TRANSPORTE DE MÓVEIS E CARGAS ESPECIAIS.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
-          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Na ISALE, cada içamento começa com uma análise do que precisa ser movido e das condições de acesso. Planejamos a operação para transportar móveis e cargas especiais com cuidado, do início ao fim.</p>
+          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Na ISALE, compreendemos que cada projeto é único e requer soluções personalizadas. Nossa equipe é formada por profissionais altamente treinados e experientes, que entendem a importância do seu projeto. Estamos prontos para atender você, desde o içamento mais simples até o mais complexo.</p>
           <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
           <ul className="mt-7 grid max-w-[680px] gap-4 text-sm leading-6 text-muted-foreground md:text-base">
             <li className="border-l-2 border-signal pl-4">Atendimento personalizado, com soluções sob medida para projetos residenciais e comerciais.</li>
