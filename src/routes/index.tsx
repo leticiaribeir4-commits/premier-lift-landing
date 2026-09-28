@@ -15,9 +15,9 @@ const INSTAGRAM_URL = "https://www.instagram.com/isaleicamentos/";
 
 const work = [
   { image: equipment.url, alt: "Spa sendo içado até um apartamento em edifício alto", title: "Içamento de spa", number: "01", detail: "Transporte especializado" },
-  { image: facade.url, alt: "Peça de mármore sendo içada em frente a um edifício", title: "Içamento de mármore", number: "02", detail: "Precisão e cuidado" },
+  { image: facade.url, alt: "Carga sendo içada até um andar alto de edifício", title: "Içamento em andar alto", number: "02", detail: "Precisão e cuidado" },
   { image: piano.url, alt: "Piano de cauda branco em ambiente interno", title: "Peças especiais", number: "03", detail: "Cuidado em cada detalhe" },
-  { image: glass.url, alt: "Operação em fachada envidraçada de edifício", title: "Fachadas", number: "04", detail: "Operações externas" },
+  { image: glass.url, alt: "Peça de mármore sendo içada junto à fachada envidraçada de edifício", title: "Içamento de mármore", number: "04", detail: "Operações externas" },
 ];
 
 const solutions = [
