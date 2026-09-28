@@ -99,7 +99,7 @@ function Index() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[560px] text-[clamp(3.5rem,6vw,6.3rem)]">A SOLUÇÃO PARA SEUS MÓVEIS E OBJETOS QUE NÃO PASSAM PELO ELEVADOR OU ESCADA E <span className="text-primary">PRECISAM DE IÇAMENTO SEGURO.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
-          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Há anos, a ISALE é referência em içamento seguro e soluções sob medida para o transporte de móveis e cargas especiais.</p>
+          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Na ISALE, cada içamento começa com uma análise do que precisa ser movido e das condições de acesso. Planejamos a operação para transportar móveis e cargas especiais com cuidado, do início ao fim.</p>
           <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
           <ul className="mt-7 grid max-w-[680px] gap-4 text-sm leading-6 text-muted-foreground md:text-base">
             <li className="border-l-2 border-signal pl-4">Atendimento personalizado, com soluções sob medida para projetos residenciais e comerciais.</li>
