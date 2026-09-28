@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Instagram, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/isale-logo.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
@@ -11,6 +11,7 @@ import between from "@/assets/icamento-entre-predios.jpeg.asset.json";
 
 const WHATSAPP_URL = "https://wa.me/5511915718147?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20i%C3%A7amento.";
 const EMAIL_URL = "mailto:isaleicamentos@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20-%20Isale%20I%C3%A7amentos";
+const INSTAGRAM_URL = "https://www.instagram.com/isaleicamentos/";
 
 const work = [
   { image: equipment.url, alt: "Equipamento içado até um apartamento em edifício alto", title: "Equipamentos", number: "01", detail: "Cargas de grande porte" },
@@ -55,7 +56,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Brand() {
-  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center rounded-md bg-white/95 px-2.5 py-1.5 shadow-sm">
+  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center">
     <img src={logo.url} alt="Isale Içamentos" className="h-16 w-auto md:h-[4.5rem]" />
   </a>;
 }
@@ -81,7 +82,7 @@ function Index() {
       <div className="absolute inset-0 bg-gradient-to-t from-hero/75 via-transparent to-hero/20" />
       <div className="relative mx-auto flex min-h-[710px] max-w-[1440px] flex-col justify-end px-5 pb-12 pt-32 md:min-h-[740px] md:px-10 md:pb-28 lg:h-full lg:px-16 lg:pb-32">
         <div className="max-w-[810px]">
-          <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> RESIDENCIAL E COMERCIAL</div>
+          <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> IÇAMENTO RESIDENCIAL E COMERCIAL</div>
           <h1 className="heading-display max-w-[870px] text-[clamp(3.6rem,8vw,7.6rem)]">SOLUÇÕES PARA SEUS <span className="text-signal">MÓVEIS E OBJETOS</span></h1>
           <p className="mt-6 text-xl font-medium leading-snug text-hero-foreground/90 md:text-2xl">Especialistas em içamento residencial e comercial.</p>
           <p className="mt-4 max-w-[500px] text-base leading-relaxed text-hero-foreground/85 md:text-lg">Movemos o que parece impossível — com planejamento, segurança e cuidado em cada detalhe.</p>
@@ -96,8 +97,17 @@ function Index() {
 
     <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
-        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[500px] text-[clamp(3.5rem,6vw,6.3rem)]">QUANDO A CARGA É COMPLEXA, <span className="text-primary">A RESPOSTA É PRECISA.</span></h2></div>
-        <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10"><p className="max-w-[610px] text-xl leading-[1.6] text-foreground md:text-2xl">Cada operação tem sua própria escala, seus próprios desafios e um único caminho: fazer acontecer com planejamento e cuidado.</p><p className="mt-6 max-w-[540px] text-base leading-7 text-muted-foreground">Na Isale Içamentos, transformamos desafios de acesso e movimentação em soluções para o seu projeto. De móveis e objetos que não cabem pela escada a equipamentos volumosos, nosso foco está em cada etapa da operação.</p><a href="#solucoes" className="mt-8 inline-flex items-center gap-2 self-start border-b-2 border-signal pb-2 text-xs font-bold uppercase tracking-[.12em] text-primary">Conheça as soluções <ArrowRight size={17} /></a></div>
+        <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[560px] text-[clamp(3.5rem,6vw,6.3rem)]">A SOLUÇÃO PARA SEUS MÓVEIS E OBJETOS QUE NÃO PASSAM PELO ELEVADOR OU ESCADA E <span className="text-primary">PRECISAM DE IÇAMENTO SEGURO.</span></h2></div>
+        <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
+          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Compreendemos que cada projeto é único e requer soluções personalizadas. Nossa equipe é formada por profissionais altamente treinados e experientes, que entendem a importância do seu projeto. Estamos prontos para atender você, desde o içamento mais simples até o mais complexo.</p>
+          <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
+          <ul className="mt-7 grid max-w-[680px] gap-4 text-sm leading-6 text-muted-foreground md:text-base">
+            <li className="border-l-2 border-signal pl-4">Atendimento personalizado, com soluções sob medida para projetos residenciais e comerciais.</li>
+            <li className="border-l-2 border-signal pl-4">Equipe altamente treinada conforme as normas NR35, NR12 e NR18, oferecendo qualidade e segurança.</li>
+            <li className="border-l-2 border-signal pl-4">Soluções em içamentos que garantem a realização de projetos com eficiência e segurança.</li>
+          </ul>
+          <a href="#solucoes" className="mt-8 inline-flex items-center gap-2 self-start border-b-2 border-signal pb-2 text-xs font-bold uppercase tracking-[.12em] text-primary">Conheça as soluções <ArrowRight size={17} /></a>
+        </div>
       </div>
     </section>
 
@@ -142,6 +152,11 @@ function Index() {
             <span className="flex min-w-0 flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">E-mail</span><span className="truncate font-display text-xl font-bold uppercase md:text-2xl">isaleicamentos@gmail.com</span></span>
             <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="group flex items-center gap-4 border-b border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><Instagram size={22} /></span>
+            <span className="flex flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">Instagram</span><span className="font-display text-xl font-bold uppercase md:text-2xl">@isaleicamentos</span></span>
+            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>
@@ -151,6 +166,7 @@ function Index() {
         <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147</a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
         <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>
