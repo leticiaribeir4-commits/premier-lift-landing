@@ -1,21 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, Menu, Play, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import hook from "@/assets/isale-hook.png.asset.json";
+import logo from "@/assets/isale-logo.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
 import equipment from "@/assets/icamento-equipamento-predio.jpeg.asset.json";
 import glass from "@/assets/icamento-fachada-vidro.jpeg.asset.json";
 import piano from "@/assets/piano-cauda.jpeg.asset.json";
 import between from "@/assets/icamento-entre-predios.jpeg.asset.json";
-import film from "@/assets/icamento-em-acao.mp4.asset.json";
-import poster from "@/assets/icamento-video-capa.jpg.asset.json";
+
+const WHATSAPP_URL = "https://wa.me/5511915718147?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20i%C3%A7amento.";
+const EMAIL_URL = "mailto:isaleicamentos@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20-%20Isale%20I%C3%A7amentos";
 
 const work = [
   { image: equipment.url, alt: "Equipamento içado até um apartamento em edifício alto", title: "Equipamentos", number: "01", detail: "Cargas de grande porte" },
   { image: facade.url, alt: "Carga suspensa em frente à fachada de um edifício", title: "Grandes alturas", number: "02", detail: "Acesso em altura" },
   { image: piano.url, alt: "Piano de cauda branco em ambiente interno", title: "Peças especiais", number: "03", detail: "Cuidado em cada detalhe" },
   { image: glass.url, alt: "Operação em fachada envidraçada de edifício", title: "Fachadas", number: "04", detail: "Operações externas" },
+];
+
+const solutions = [
+  { icon: Armchair, title: "Içamento residencial", text: "Móveis, sofás, pianos e objetos grandes que não passam por escadas ou elevadores." },
+  { icon: Building2, title: "Içamento comercial", text: "Equipamentos e cargas de grande porte para empresas, lojas e obras." },
+  { icon: PackageCheck, title: "Peças especiais", text: "Itens delicados ou fora do padrão, embalados e movidos com cuidado extremo." },
+];
+
+const steps = [
+  { icon: MessagesSquare, title: "Chame no WhatsApp", text: "Envie uma foto do item e diga onde ele está e para onde precisa ir." },
+  { icon: ClipboardCheck, title: "Receba o orçamento", text: "Avaliamos o acesso, a altura e a equipe necessária — sem compromisso." },
+  { icon: ShieldCheck, title: "Nós fazemos o resto", text: "Chegamos com o equipamento certo e executamos tudo com segurança." },
 ];
 
 const nav = [
@@ -25,36 +38,38 @@ const nav = [
   { href: "#contato", label: "Contato" },
 ];
 
+function WhatsAppIcon({ className }: { className?: string }) {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>;
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Isale Içamentos | Içamento de cargas com precisão" },
-    { name: "description", content: "Isale Içamentos: soluções em içamento de cargas, equipamentos e peças especiais. Conheça operações reais e solicite um orçamento." },
-    { property: "og:title", content: "Isale Içamentos | Içamento de cargas com precisão" },
-    { property: "og:description", content: "Conheça os trabalhos da Isale Içamentos e solicite um orçamento para sua operação." },
+    { title: "Isale Içamentos | Içamento residencial e comercial" },
+    { name: "description", content: "Soluções para seus móveis e objetos. Especialistas em içamento residencial e comercial. Solicite seu orçamento pelo WhatsApp 11 91571-8147." },
+    { property: "og:title", content: "Isale Içamentos | Içamento residencial e comercial" },
+    { property: "og:description", content: "Soluções para seus móveis e objetos. Especialistas em içamento residencial e comercial. Solicite seu orçamento." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
   component: Index,
 });
 
-function Brand({ light = false }: { light?: boolean }) {
-  return <a href="#inicio" aria-label="Isale Içamentos — início" className={`inline-flex items-center gap-2.5 shrink-0 ${light ? "text-hero-foreground" : "text-primary"}`}>
-    <img src={hook.url} alt="" className="h-11 w-9 object-contain" />
-    <span className="flex flex-col leading-none"><strong className="font-display text-[2rem] font-black leading-[.76]">ISALE</strong><span className="mt-1.5 text-[.55rem] font-bold tracking-[.25em]">IÇAMENTOS</span></span>
+function Brand() {
+  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center rounded-md bg-white/95 px-2.5 py-1.5 shadow-sm">
+    <img src={logo.url} alt="Isale Içamentos" className="h-16 w-auto md:h-[4.5rem]" />
   </a>;
 }
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false);
   return <main id="inicio" className="overflow-hidden">
     <header className="absolute inset-x-0 top-0 z-30 border-b border-hero-foreground/20">
-      <div className="mx-auto flex h-[78px] max-w-[1440px] items-center justify-between px-5 md:px-10 lg:px-16">
-        <Brand light />
+      <div className="mx-auto flex h-[92px] max-w-[1440px] items-center justify-between px-5 md:h-[104px] md:px-10 lg:px-16">
+        <Brand />
         <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
           {nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase tracking-[.12em] text-hero-foreground/80 transition-colors hover:text-signal">{item.label}</a>)}
         </nav>
-        <Button asChild variant="hero" className="hidden h-10 px-5 text-xs font-bold uppercase lg:inline-flex"><a href="#contato">Solicitar orçamento <ArrowUpRight /></a></Button>
+        <Button asChild variant="hero" className="hidden h-10 px-5 text-xs font-bold uppercase lg:inline-flex"><a href={WHATSAPP_URL} target="_blank" rel="noopener">Solicite seu orçamento <ArrowUpRight /></a></Button>
         <Button aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} variant="inverse" size="icon" className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
       </div>
       {menuOpen && <nav aria-label="Menu móvel" className="flex flex-col border-t border-hero-foreground/20 bg-hero px-6 py-5 lg:hidden">{nav.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="border-b border-hero-foreground/15 py-3 text-sm font-bold uppercase text-hero-foreground">{item.label}</a>)}</nav>}
@@ -64,13 +79,14 @@ function Index() {
       <img src={between.url} alt="Carga suspensa entre edifícios durante operação de içamento" className="absolute inset-0 h-full w-full object-cover object-[52%_center] lg:object-[center_42%]" />
       <div className="absolute inset-0 bg-gradient-to-r from-hero via-hero/80 to-hero/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-hero/75 via-transparent to-hero/20" />
-      <div className="relative mx-auto flex min-h-[710px] max-w-[1440px] flex-col justify-end px-5 pb-12 pt-28 md:min-h-[740px] md:px-10 md:pb-28 lg:h-full lg:px-16 lg:pb-32">
+      <div className="relative mx-auto flex min-h-[710px] max-w-[1440px] flex-col justify-end px-5 pb-12 pt-32 md:min-h-[740px] md:px-10 md:pb-28 lg:h-full lg:px-16 lg:pb-32">
         <div className="max-w-[810px]">
-          <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> IÇAMENTO DE CARGAS</div>
-          <h1 className="heading-display max-w-[870px] text-[clamp(4rem,9vw,8.6rem)]">O DESAFIO É<br /><span className="text-signal">NOSSO.</span><br />A SOLUÇÃO<br />TAMBÉM.</h1>
-          <p className="mt-7 max-w-[500px] text-base leading-relaxed text-hero-foreground/85 md:text-lg">Movemos o que parece impossível. Soluções em içamento para cargas, equipamentos e peças que exigem atenção especial.</p>
+          <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> RESIDENCIAL E COMERCIAL</div>
+          <h1 className="heading-display max-w-[870px] text-[clamp(3.6rem,8vw,7.6rem)]">SOLUÇÕES PARA SEUS <span className="text-signal">MÓVEIS E OBJETOS</span></h1>
+          <p className="mt-6 text-xl font-medium leading-snug text-hero-foreground/90 md:text-2xl">Especialistas em içamento residencial e comercial.</p>
+          <p className="mt-4 max-w-[500px] text-base leading-relaxed text-hero-foreground/85 md:text-lg">Movemos o que parece impossível — com planejamento, segurança e cuidado em cada detalhe.</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild variant="hero" size="feature"><a href="#contato">Solicitar orçamento <ArrowUpRight /></a></Button>
+            <Button asChild variant="hero" size="feature"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> Solicite seu orçamento</a></Button>
             <Button asChild variant="inverse" size="feature"><a href="#trabalhos">Ver trabalhos <ArrowDown /></a></Button>
           </div>
         </div>
@@ -81,7 +97,7 @@ function Index() {
     <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[500px] text-[clamp(3.5rem,6vw,6.3rem)]">QUANDO A CARGA É COMPLEXA, <span className="text-primary">A RESPOSTA É PRECISA.</span></h2></div>
-        <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10"><p className="max-w-[610px] text-xl leading-[1.6] text-foreground md:text-2xl">Cada operação tem sua própria escala, seus próprios desafios e um único caminho: fazer acontecer com planejamento e cuidado.</p><p className="mt-6 max-w-[540px] text-base leading-7 text-muted-foreground">Na Isale Içamentos, transformamos desafios de acesso e movimentação em soluções para o seu projeto. De equipamentos volumosos a peças delicadas, nosso foco está em cada etapa da operação.</p><a href="#solucoes" className="mt-8 inline-flex items-center gap-2 self-start border-b-2 border-signal pb-2 text-xs font-bold uppercase tracking-[.12em] text-primary">Conheça as soluções <ArrowRight size={17} /></a></div>
+        <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10"><p className="max-w-[610px] text-xl leading-[1.6] text-foreground md:text-2xl">Cada operação tem sua própria escala, seus próprios desafios e um único caminho: fazer acontecer com planejamento e cuidado.</p><p className="mt-6 max-w-[540px] text-base leading-7 text-muted-foreground">Na Isale Içamentos, transformamos desafios de acesso e movimentação em soluções para o seu projeto. De móveis e objetos que não cabem pela escada a equipamentos volumosos, nosso foco está em cada etapa da operação.</p><a href="#solucoes" className="mt-8 inline-flex items-center gap-2 self-start border-b-2 border-signal pb-2 text-xs font-bold uppercase tracking-[.12em] text-primary">Conheça as soluções <ArrowRight size={17} /></a></div>
       </div>
     </section>
 
@@ -89,7 +105,7 @@ function Index() {
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-signal">O QUE FAZEMOS</span><h2 className="heading-display mt-5 text-[clamp(3.6rem,6vw,6.5rem)]">SOLUÇÕES PARA<br />CADA DESAFIO.</h2></div><p className="max-w-[340px] text-sm leading-6 text-hero-foreground/65">Operações pensadas para o que você precisa mover, onde você precisa chegar.</p></div>
         <div className="grid border-t border-hero-foreground/25 md:grid-cols-3">
-          {[{n:"01", title:"Içamento de cargas", text:"Movimentação de cargas em locais com acesso desafiador."},{n:"02", title:"Equipamentos", text:"Soluções para a instalação e movimentação de equipamentos de grande porte."},{n:"03", title:"Peças especiais", text:"Atenção redobrada para peças que pedem um cuidado diferente."}].map((item) => <div key={item.n} className="group border-b border-hero-foreground/25 py-8 md:border-r md:px-7 md:last:border-r-0 lg:px-10"><div className="mb-16 flex items-center justify-between"><span className="font-display text-2xl font-semibold text-signal">{item.n}</span><ArrowUpRight className="h-5 w-5 text-signal transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div><h3 className="font-display text-3xl font-bold uppercase md:text-4xl">{item.title}</h3><p className="mt-3 max-w-[260px] text-sm leading-6 text-hero-foreground/65">{item.text}</p></div>)}
+          {solutions.map((item) => <div key={item.title} className="group border-b border-hero-foreground/25 py-8 md:border-r md:px-7 md:last:border-r-0 lg:px-10"><span className="mb-6 flex h-12 w-12 items-center justify-center bg-signal text-signal-foreground"><item.icon size={24} strokeWidth={2} /></span><h3 className="font-display text-3xl font-bold uppercase md:text-4xl">{item.title}</h3><p className="mt-3 max-w-[290px] text-sm leading-6 text-hero-foreground/65">{item.text}</p></div>)}
         </div>
       </div>
     </section>
@@ -101,11 +117,44 @@ function Index() {
       </div>
     </section>
 
-    <section className="bg-surface py-16 md:py-24"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 md:px-10 lg:grid-cols-[.55fr_1fr] lg:items-center lg:gap-20 lg:px-16"><div><span className="section-kicker text-primary">EM MOVIMENTO</span><h2 className="heading-display mt-5 text-[clamp(3.4rem,5vw,5.5rem)]">VEJA A OPERAÇÃO<br /><span className="text-primary">ACONTECER.</span></h2><p className="mt-5 max-w-[370px] text-base leading-7 text-muted-foreground">Do planejamento à execução, cada movimento importa.</p></div><div className="relative overflow-hidden bg-hero"><video className="aspect-video w-full object-cover" poster={poster.url} src={film.url} playsInline controls={videoOpen} autoPlay={videoOpen} muted={videoOpen} loop={videoOpen} preload="none" aria-label="Vídeo de operação real de içamento" />{!videoOpen && <Button variant="hero" size="icon" aria-label="Reproduzir vídeo da operação" onClick={() => setVideoOpen(true)} className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full"><Play className="ml-0.5 fill-current" /></Button>}</div></div></section>
+    <section className="bg-surface py-16 md:py-24">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">SIMPLES DO SEU LADO</span><h2 className="heading-display mt-5 text-[clamp(3.4rem,5.5vw,6rem)]">SOLICITAR É <span className="text-primary">FÁCIL ASSIM.</span></h2></div><p className="max-w-[340px] text-sm leading-6 text-muted-foreground">Do primeiro contato à operação concluída, você acompanha cada etapa.</p></div>
+        <div className="grid gap-px border border-border bg-border md:grid-cols-3">{steps.map(item => <div key={item.title} className="flex flex-col bg-background p-8 lg:p-10"><span className="flex h-12 w-12 items-center justify-center bg-signal text-signal-foreground"><item.icon size={24} strokeWidth={2} /></span><h3 className="mt-6 font-display text-2xl font-bold uppercase md:text-3xl">{item.title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">{item.text}</p></div>)}</div>
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <Button asChild size="feature" className="h-14 px-7 text-base font-bold uppercase"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> Solicite seu orçamento</a></Button>
+          <span className="text-sm text-muted-foreground">Resposta rápida pelo WhatsApp 11 91571-8147</span>
+        </div>
+      </div>
+    </section>
 
-    <section className="bg-background py-20 md:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 md:grid-cols-2 md:px-10 lg:px-16"><div><span className="section-kicker text-primary">NOSSO JEITO DE FAZER</span><h2 className="heading-display mt-5 text-[clamp(3.5rem,6vw,6rem)]">CADA DETALHE<br />FAZ <span className="text-primary">DIFERENÇA.</span></h2></div><div className="grid gap-0 border-t border-border">{["Entender o desafio antes de movimentar", "Planejar o acesso e a operação", "Cuidar da carga em cada movimento"].map((text, index) => <div key={text} className="flex items-center gap-5 border-b border-border py-6"><span className="flex h-9 w-9 shrink-0 items-center justify-center bg-signal text-signal-foreground"><Check size={19} strokeWidth={3} /></span><span className="font-display text-2xl font-bold uppercase md:text-3xl">{text}</span><span className="ml-auto self-start text-xs text-muted-foreground">0{index+1}</span></div>)}</div></div></section>
-
-    <section id="contato" className="scroll-mt-10 bg-signal py-20 text-signal-foreground md:py-28"><div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-10 px-5 md:px-10 lg:flex-row lg:items-end lg:px-16"><div><span className="section-kicker before:bg-hero">VAMOS CONVERSAR</span><h2 className="heading-display mt-5 text-[clamp(4rem,8vw,8rem)]">TEM UM DESAFIO?<br />CONTE PRA GENTE.</h2><p className="mt-6 max-w-[600px] text-base leading-7">Descreva o que precisa ser içado e onde a operação será realizada. Vamos encontrar o melhor caminho juntos.</p></div><Button asChild variant="default" size="feature" className="h-14 shrink-0 self-start px-7 lg:self-end"><a href="mailto:?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20-%20Isale%20I%C3%A7amentos">Preparar e-mail <ArrowUpRight /></a></Button></div></section>
-    <footer className="bg-hero py-10 text-hero-foreground"><div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 md:flex-row md:items-end md:justify-between md:px-10 lg:px-16"><div><Brand light /><p className="mt-5 text-xs text-hero-foreground/55">Soluções em içamento de cargas.</p></div><div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div><span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span></div></footer>
+    <section id="contato" className="scroll-mt-10 bg-signal py-20 text-signal-foreground md:py-28">
+      <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-12 px-5 md:px-10 lg:flex-row lg:items-end lg:px-16">
+        <div><span className="section-kicker before:bg-hero">VAMOS CONVERSAR</span><h2 className="heading-display mt-5 text-[clamp(4rem,8vw,8rem)]">TEM UM DESAFIO?<br />CONTE PRA GENTE.</h2><p className="mt-6 max-w-[600px] text-base leading-7">Descreva o que precisa ser içado e onde a operação será realizada. Respondemos rápido com a melhor solução para o seu caso.</p></div>
+        <div className="flex w-full max-w-[440px] shrink-0 flex-col lg:self-end">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex items-center gap-4 border-t border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><WhatsAppIcon className="h-6 w-6" /></span>
+            <span className="flex flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">WhatsApp</span><span className="font-display text-2xl font-bold uppercase">11 91571-8147</span></span>
+            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
+          <a href={EMAIL_URL} className="group flex items-center gap-4 border-y border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><Mail size={22} /></span>
+            <span className="flex min-w-0 flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">E-mail</span><span className="truncate font-display text-xl font-bold uppercase md:text-2xl">isaleicamentos@gmail.com</span></span>
+            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer className="bg-hero py-10 text-hero-foreground">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 md:flex-row md:items-end md:justify-between md:px-10 lg:px-16">
+        <div><Brand /><p className="mt-5 text-xs text-hero-foreground/55">Soluções para seus móveis e objetos.</p></div>
+        <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147</a>
+          <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
+        </div>
+        <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
+        <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>
+      </div>
+    </footer>
   </main>;
 }
