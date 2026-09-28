@@ -14,8 +14,8 @@ const EMAIL_URL = "mailto:isaleicamentos@gmail.com?subject=Solicita%C3%A7%C3%A3o
 const INSTAGRAM_URL = "https://www.instagram.com/isaleicamentos/";
 
 const work = [
-  { image: equipment.url, alt: "Equipamento içado até um apartamento em edifício alto", title: "Equipamentos", number: "01", detail: "Cargas de grande porte" },
-  { image: facade.url, alt: "Carga suspensa em frente à fachada de um edifício", title: "Grandes alturas", number: "02", detail: "Acesso em altura" },
+  { image: equipment.url, alt: "Spa sendo içado até um apartamento em edifício alto", title: "Içamento de spa", number: "01", detail: "Transporte especializado" },
+  { image: facade.url, alt: "Peça de mármore sendo içada em frente a um edifício", title: "Içamento de mármore", number: "02", detail: "Precisão e cuidado" },
   { image: piano.url, alt: "Piano de cauda branco em ambiente interno", title: "Peças especiais", number: "03", detail: "Cuidado em cada detalhe" },
   { image: glass.url, alt: "Operação em fachada envidraçada de edifício", title: "Fachadas", number: "04", detail: "Operações externas" },
 ];
@@ -56,7 +56,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Brand() {
-  return <a href="#inicio" aria-label="Isale Içamentos — início" className="brand-mark inline-flex shrink-0 items-center">
+  return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center bg-card px-3 py-1.5 shadow-sm">
     <img src={logo.url} alt="Isale Içamentos" className="h-20 w-auto md:h-24" />
   </a>;
 }
@@ -99,7 +99,7 @@ function Index() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[560px] text-[clamp(3.5rem,6vw,6.3rem)]">A SOLUÇÃO PARA SEUS MÓVEIS E OBJETOS QUE NÃO PASSAM PELO ELEVADOR OU ESCADA E <span className="text-primary">PRECISAM DE IÇAMENTO SEGURO.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
-          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Compreendemos que cada projeto é único e requer soluções personalizadas. Nossa equipe é formada por profissionais altamente treinados e experientes, que entendem a importância do seu projeto. Estamos prontos para atender você, desde o içamento mais simples até o mais complexo.</p>
+          <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Há anos, a ISALE é referência em içamento seguro e soluções sob medida para o transporte de móveis e cargas especiais.</p>
           <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
           <ul className="mt-7 grid max-w-[680px] gap-4 text-sm leading-6 text-muted-foreground md:text-base">
             <li className="border-l-2 border-signal pl-4">Atendimento personalizado, com soluções sob medida para projetos residenciais e comerciais.</li>
