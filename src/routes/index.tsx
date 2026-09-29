@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Instagram, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/isale-logo-vector.png.asset.json";
+import logo from "@/assets/isale-logo-readable.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
 import equipment from "@/assets/icamento-equipamento-predio.jpeg.asset.json";
 import glass from "@/assets/icamento-fachada-vidro.jpeg.asset.json";
