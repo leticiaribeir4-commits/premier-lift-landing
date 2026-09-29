@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, ClipboardCheck, Instagram, Mail, Menu, MessagesSquare, PackageCheck, ShieldCheck, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, MessagesSquare, PackageCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/isale-logo-readable.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
@@ -27,16 +27,10 @@ const solutions = [
   { icon: PackageCheck, title: "Peças especiais", text: "Itens delicados ou fora do padrão, embalados e movidos com cuidado extremo." },
 ];
 
-const steps = [
-  { icon: MessagesSquare, title: "Chame no WhatsApp", text: "Envie uma foto do item e diga onde ele está e para onde precisa ir." },
-  { icon: ClipboardCheck, title: "Receba o orçamento", text: "Avaliamos o acesso, a altura e a equipe necessária — sem compromisso." },
-  { icon: ShieldCheck, title: "Nós fazemos o resto", text: "Chegamos com o equipamento certo e executamos tudo com segurança." },
-];
-
 const nav = [
+  { href: "#trabalhos", label: "Trabalhos" },
   { href: "#sobre", label: "Sobre" },
   { href: "#solucoes", label: "Soluções" },
-  { href: "#trabalhos", label: "Trabalhos" },
   { href: "#contato", label: "Contato" },
 ];
 
@@ -96,6 +90,13 @@ function Index() {
       <div className="absolute bottom-0 right-0 hidden bg-signal px-9 py-5 text-signal-foreground md:flex md:items-center md:gap-8"><span className="font-display text-2xl font-bold uppercase">A altura não é limite.</span><ArrowUpRight className="h-5 w-5" /></div>
     </section>
 
+    <section id="trabalhos" className="scroll-mt-10 bg-background py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">NA PRÁTICA</span><h2 className="heading-display mt-5 text-[clamp(3.6rem,6vw,6.5rem)]">NOSSO TRABALHO<br /><span className="text-primary">FALA POR SI.</span></h2></div><p className="max-w-[310px] text-sm leading-6 text-muted-foreground">Registros reais de operações e desafios que ajudamos a superar.</p></div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{work.map(item => <figure key={item.number} className="group relative m-0 h-[420px] overflow-hidden bg-surface md:h-[480px]"><img src={item.image} alt={item.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-hero/90 via-transparent to-transparent" /><figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-hero-foreground"><div><span className="text-xs font-bold text-signal">{item.number} / {item.detail}</span><h3 className="mt-1 font-display text-3xl font-bold uppercase">{item.title}</h3></div><ArrowUpRight className="mb-1 shrink-0 text-signal" size={20} /></figcaption></figure>)}</div>
+      </div>
+    </section>
+
     <section id="sobre" className="scroll-mt-10 bg-background py-14 md:py-28">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 md:px-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:px-16">
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[620px] text-[clamp(3.5rem,6vw,6.3rem)]">REFERÊNCIA EM <span className="text-primary">IÇAMENTO SEGURO.</span></h2></div>
@@ -121,41 +122,20 @@ function Index() {
       </div>
     </section>
 
-    <section id="trabalhos" className="scroll-mt-10 bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">NA PRÁTICA</span><h2 className="heading-display mt-5 text-[clamp(3.6rem,6vw,6.5rem)]">NOSSO TRABALHO<br /><span className="text-primary">FALA POR SI.</span></h2></div><p className="max-w-[310px] text-sm leading-6 text-muted-foreground">Registros reais de operações e desafios que ajudamos a superar.</p></div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{work.map(item => <figure key={item.number} className="group relative m-0 h-[420px] overflow-hidden bg-surface md:h-[480px]"><img src={item.image} alt={item.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-hero/90 via-transparent to-transparent" /><figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-hero-foreground"><div><span className="text-xs font-bold text-signal">{item.number} / {item.detail}</span><h3 className="mt-1 font-display text-3xl font-bold uppercase">{item.title}</h3></div><ArrowUpRight className="mb-1 shrink-0 text-signal" size={20} /></figcaption></figure>)}</div>
-      </div>
-    </section>
-
-    <section className="bg-surface py-16 md:py-24">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">SIMPLES DO SEU LADO</span><h2 className="heading-display mt-5 text-[clamp(3.4rem,5.5vw,6rem)]">SOLICITAR É <span className="text-primary">FÁCIL ASSIM.</span></h2></div><p className="max-w-[340px] text-sm leading-6 text-muted-foreground">Do primeiro contato à operação concluída, você acompanha cada etapa.</p></div>
-        <div className="grid gap-px border border-border bg-border md:grid-cols-3">{steps.map(item => <div key={item.title} className="flex flex-col bg-background p-8 lg:p-10"><span className="flex h-12 w-12 items-center justify-center bg-signal text-signal-foreground"><item.icon size={24} strokeWidth={2} /></span><h3 className="mt-6 font-display text-2xl font-bold uppercase md:text-3xl">{item.title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">{item.text}</p></div>)}</div>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <Button asChild size="feature" className="h-14 px-7 text-base font-bold uppercase"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> Solicite seu orçamento</a></Button>
-          <span className="text-sm text-muted-foreground">Resposta rápida pelo WhatsApp 11 91571-8147</span>
-        </div>
-      </div>
-    </section>
-
     <section id="contato" className="scroll-mt-10 bg-hero py-20 text-hero-foreground md:py-28">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10 lg:px-16">
         <span className="section-kicker text-signal">VAMOS CONVERSAR?</span>
         <h2 className="heading-display mx-auto mt-8 max-w-[950px] text-5xl sm:text-6xl lg:text-8xl">SEU PROJETO MERECE<br /><span className="text-signal">UMA SOLUÇÃO À ALTURA.</span></h2>
         <p className="mx-auto mt-8 max-w-[720px] text-lg leading-relaxed text-hero-foreground/85 md:text-xl">Conte para nós o que você precisa fazer. Vamos entender sua demanda e encontrar a melhor solução.</p>
         <Button asChild variant="hero" size="feature" className="mt-9 h-14 max-w-full px-5 text-sm sm:px-8 sm:text-base"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> CONVERSAR NO WHATSAPP <ArrowRight /></a></Button>
-        <div className="mt-16 grid text-left sm:grid-cols-2">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pr-6">
+        <div className="mx-auto mt-16 grid max-w-[900px] text-left md:grid-cols-3">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal md:pr-6">
             <WhatsAppIcon className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">PRINCIPAL DO WHATSAPP</span><span className="font-display text-2xl font-bold">(11) 91571-8147</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
-          <a href={OTHER_PHONE_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pl-6">
-            <MessagesSquare className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">OUTRO CONTATO</span><span className="font-display text-2xl font-bold">(11) 94892-4855</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
+          <a href={EMAIL_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal md:px-6">
+            <Mail className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">E-MAIL</span><span className="block break-all font-display text-xl font-bold">isaleicamentos@gmail.com</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
-          <a href={EMAIL_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pr-6">
-            <Mail className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">E-MAIL</span><span className="block break-all font-display text-xl font-bold sm:text-2xl">isaleicamentos@gmail.com</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
-          </a>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pl-6">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal md:pl-6">
             <Instagram className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">INSTAGRAM</span><span className="font-display text-2xl font-bold">@isaleicamentos</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
         </div>
@@ -166,9 +146,9 @@ function Index() {
         <div><Brand /><p className="mt-5 text-xs text-hero-foreground/55">Soluções para seus móveis e objetos.</p></div>
         <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147</a>
-           <a href={OTHER_PHONE_URL} className="inline-flex items-center gap-2 hover:text-signal"><MessagesSquare size={16} /> 11 94892-4855</a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
+          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><MessagesSquare size={14} /> Orçamentos — 11 94892-4855</a>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
         <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>
