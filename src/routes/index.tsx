@@ -10,6 +10,7 @@ import piano from "@/assets/piano-cauda.jpeg.asset.json";
 import between from "@/assets/icamento-entre-predios.jpeg.asset.json";
 
 const WHATSAPP_URL = "https://wa.me/5511915718147?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20i%C3%A7amento.";
+const OTHER_PHONE_URL = "tel:+5511948924855";
 const EMAIL_URL = "mailto:isaleicamentos@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20-%20Isale%20I%C3%A7amentos";
 const INSTAGRAM_URL = "https://www.instagram.com/isaleicamentos/";
 
@@ -138,24 +139,24 @@ function Index() {
       </div>
     </section>
 
-    <section id="contato" className="scroll-mt-10 bg-signal py-20 text-signal-foreground md:py-28">
-      <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-12 px-5 md:px-10 lg:flex-row lg:items-end lg:px-16">
-        <div><span className="section-kicker before:bg-hero">VAMOS CONVERSAR</span><h2 className="heading-display mt-5 text-[clamp(4rem,8vw,8rem)]">TEM UM DESAFIO?<br />CONTE PRA GENTE.</h2><p className="mt-6 max-w-[600px] text-base leading-7">Descreva o que precisa ser içado e onde a operação será realizada. Respondemos rápido com a melhor solução para o seu caso.</p></div>
-        <div className="flex w-full max-w-[440px] shrink-0 flex-col lg:self-end">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex items-center gap-4 border-t border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><WhatsAppIcon className="h-6 w-6" /></span>
-            <span className="flex flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">WhatsApp</span><span className="font-display text-2xl font-bold uppercase">11 91571-8147</span></span>
-            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+    <section id="contato" className="scroll-mt-10 bg-hero py-20 text-hero-foreground md:py-28">
+      <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10 lg:px-16">
+        <span className="section-kicker text-signal">VAMOS CONVERSAR?</span>
+        <h2 className="heading-display mx-auto mt-8 max-w-[950px] text-5xl sm:text-6xl lg:text-8xl">SEU PROJETO MERECE<br /><span className="text-signal">UMA SOLUÇÃO À ALTURA.</span></h2>
+        <p className="mx-auto mt-8 max-w-[720px] text-lg leading-relaxed text-hero-foreground/85 md:text-xl">Conte para nós o que você precisa fazer. Vamos entender sua demanda e encontrar a melhor solução.</p>
+        <Button asChild variant="hero" size="feature" className="mt-9 h-14 max-w-full px-5 text-sm sm:px-8 sm:text-base"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> CONVERSAR NO WHATSAPP <ArrowRight /></a></Button>
+        <div className="mt-16 grid text-left sm:grid-cols-2">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pr-6">
+            <WhatsAppIcon className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">PRINCIPAL DO WHATSAPP</span><span className="font-display text-2xl font-bold">(11) 91571-8147</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
-          <a href={EMAIL_URL} className="group flex items-center gap-4 border-y border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><Mail size={22} /></span>
-            <span className="flex min-w-0 flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">E-mail</span><span className="truncate font-display text-xl font-bold uppercase md:text-2xl">isaleicamentos@gmail.com</span></span>
-            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          <a href={OTHER_PHONE_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pl-6">
+            <MessagesSquare className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">OUTRO CONTATO</span><span className="font-display text-2xl font-bold">(11) 94892-4855</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="group flex items-center gap-4 border-b border-signal-foreground/30 py-5 transition-colors hover:bg-signal-foreground/10 md:px-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-signal-foreground text-signal"><Instagram size={22} /></span>
-            <span className="flex flex-col"><span className="text-xs font-bold uppercase tracking-[.14em]">Instagram</span><span className="font-display text-xl font-bold uppercase md:text-2xl">@isaleicamentos</span></span>
-            <ArrowUpRight className="ml-auto h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          <a href={EMAIL_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pr-6">
+            <Mail className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">E-MAIL</span><span className="block break-all font-display text-xl font-bold sm:text-2xl">isaleicamentos@gmail.com</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
+          </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal sm:pl-6">
+            <Instagram className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">INSTAGRAM</span><span className="font-display text-2xl font-bold">@isaleicamentos</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
         </div>
       </div>
@@ -165,6 +166,7 @@ function Index() {
         <div><Brand /><p className="mt-5 text-xs text-hero-foreground/55">Soluções para seus móveis e objetos.</p></div>
         <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147</a>
+           <a href={OTHER_PHONE_URL} className="inline-flex items-center gap-2 hover:text-signal"><MessagesSquare size={16} /> 11 94892-4855</a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
         </div>
