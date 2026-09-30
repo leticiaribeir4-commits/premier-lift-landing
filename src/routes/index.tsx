@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, MessagesSquare, PackageCheck, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, PackageCheck, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/isale-logo-original-transparent.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
@@ -153,7 +153,7 @@ function Index() {
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> WhatsApp principal — 11 91571-8147</a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
-          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><MessagesSquare size={14} /> Telefone alternativo — 11 94892-4855</a>
+          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><Phone size={14} /> Telefone alternativo — 11 94892-4855</a>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
         <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>

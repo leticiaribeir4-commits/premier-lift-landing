@@ -9,4 +9,4 @@
 - [x] Corrigir a identificação dos dois telefones.
 - [x] Trocar “fazer” por “içar” e retirar o travessão da abertura.
 - [x] Ampliar os itens de içamento residencial, comercial e especial.
-- [ ] Verificar a página no celular e no computador.
+- [x] Verificar a página no celular e no computador.
