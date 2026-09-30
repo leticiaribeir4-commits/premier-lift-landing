@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, MessagesSquare, PackageCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/isale-logo-readable.png.asset.json";
+import logo from "@/assets/isale-logo-original-transparent.png.asset.json";
 import facade from "@/assets/icamento-fachada.jpeg.asset.json";
 import equipment from "@/assets/icamento-equipamento-predio.jpeg.asset.json";
 import glass from "@/assets/icamento-fachada-vidro.jpeg.asset.json";
@@ -22,9 +22,9 @@ const work = [
 ];
 
 const solutions = [
-  { icon: Armchair, title: "Içamento residencial", text: "Móveis, sofás, pianos e objetos grandes que não passam por escadas ou elevadores." },
-  { icon: Building2, title: "Içamento comercial", text: "Equipamentos e cargas de grande porte para empresas, lojas e obras." },
-  { icon: PackageCheck, title: "Peças especiais", text: "Itens delicados ou fora do padrão, embalados e movidos com cuidado extremo." },
+  { icon: Armchair, title: "Içamento residencial", text: "Içamos mesas, vidros, geladeiras, sofás, colchões, tapetes, banheiras, piscinas, spas e outros itens que não passam por escadas ou elevadores." },
+  { icon: Building2, title: "Içamento comercial", text: "Equipamentos, cargas de grande porte e condensadoras para empresas, lojas, condomínios e obras." },
+  { icon: PackageCheck, title: "Peças especiais", text: "Obras de arte, pianos de cauda ou de armário, mesas cascata, mármores, granitos e outros itens delicados." },
 ];
 
 const nav = [
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
 
 function Brand() {
   return <a href="#inicio" aria-label="Isale Içamentos — início" className="inline-flex shrink-0 items-center">
-    <img src={logo.url} alt="Isale Içamentos" className="brand-mark h-24 w-auto md:h-28" />
+    <img src={logo.url} alt="Isale Içamentos" className="h-24 w-auto md:h-28" />
   </a>;
 }
 
@@ -80,7 +80,7 @@ function Index() {
           <div className="mb-6 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-[.19em] text-signal"><span className="h-[2px] w-9 bg-signal" /> IÇAMENTO RESIDENCIAL E COMERCIAL</div>
           <h1 className="heading-display max-w-[870px] text-[clamp(3.6rem,8vw,7.6rem)]">SOLUÇÕES PARA SEUS <span className="text-signal">MÓVEIS E OBJETOS</span></h1>
           <p className="mt-6 text-xl font-medium leading-snug text-hero-foreground/90 md:text-2xl">Especialistas em içamento residencial e comercial.</p>
-          <p className="mt-4 max-w-[500px] text-base leading-relaxed text-hero-foreground/85 md:text-lg">Movemos o que parece impossível — com planejamento, segurança e cuidado em cada detalhe.</p>
+          <p className="mt-4 max-w-[500px] text-base leading-relaxed text-hero-foreground/85 md:text-lg">Movemos o que parece impossível com planejamento, segurança e cuidado em cada detalhe.</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild variant="hero" size="feature"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> Solicite seu orçamento</a></Button>
             <Button asChild variant="inverse" size="feature"><a href="#trabalhos">Ver trabalhos <ArrowDown /></a></Button>
@@ -92,7 +92,7 @@ function Index() {
 
     <section id="trabalhos" className="scroll-mt-10 bg-background py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16">
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">NA PRÁTICA</span><h2 className="heading-display mt-5 text-[clamp(3.6rem,6vw,6.5rem)]">NOSSO TRABALHO<br /><span className="text-primary">FALA POR SI.</span></h2></div><p className="max-w-[310px] text-sm leading-6 text-muted-foreground">Registros reais de operações e desafios que ajudamos a superar.</p></div>
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span className="section-kicker text-primary">NA PRÁTICA</span><h2 className="heading-display mt-5 max-w-[900px] text-[clamp(3.4rem,6vw,6.5rem)]">RESULTADOS REAIS<br /><span className="text-primary">ENTREGUES AOS NOSSOS CLIENTES.</span></h2></div><p className="max-w-[310px] text-sm leading-6 text-muted-foreground">Registros reais de operações e desafios que ajudamos a superar.</p></div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{work.map(item => <figure key={item.number} className="group relative m-0 h-[420px] overflow-hidden bg-surface md:h-[480px]"><img src={item.image} alt={item.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-hero/90 via-transparent to-transparent" /><figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-hero-foreground"><div><span className="text-xs font-bold text-signal">{item.number} / {item.detail}</span><h3 className="mt-1 font-display text-3xl font-bold uppercase">{item.title}</h3></div><ArrowUpRight className="mb-1 shrink-0 text-signal" size={20} /></figcaption></figure>)}</div>
       </div>
     </section>
@@ -102,7 +102,6 @@ function Index() {
         <div><span className="section-kicker text-primary">QUEM SOMOS</span><h2 className="heading-display mt-6 max-w-[620px] text-[clamp(3.5rem,6vw,6.3rem)]">REFERÊNCIA EM <span className="text-primary">IÇAMENTO SEGURO.</span></h2></div>
         <div className="flex flex-col justify-end border-l-2 border-signal pl-7 md:pl-10">
           <p className="max-w-[650px] text-lg leading-[1.65] text-foreground md:text-xl">Na ISALE, compreendemos que cada projeto é único e requer soluções personalizadas. Nossa equipe é formada por profissionais altamente treinados e experientes, que entendem a importância do seu projeto. Estamos prontos para atender você, desde o içamento mais simples até o mais complexo.</p>
-          <p className="mt-6 max-w-[650px] font-semibold leading-7 text-primary">Atendemos na Grande São Paulo, interior, litoral e outras localidades.</p>
           <ul className="mt-7 grid max-w-[680px] gap-4 text-sm leading-6 text-muted-foreground md:text-base">
             <li className="border-l-2 border-signal pl-4">Atendimento personalizado, com soluções sob medida para projetos residenciais e comerciais.</li>
             <li className="border-l-2 border-signal pl-4">Equipe altamente treinada conforme as normas NR35, NR12 e NR18, oferecendo qualidade e segurança.</li>
@@ -122,15 +121,21 @@ function Index() {
       </div>
     </section>
 
-    <section id="contato" className="scroll-mt-10 bg-hero py-20 text-hero-foreground md:py-28">
+    <aside className="bg-signal py-10 text-signal-foreground md:py-14">
+      <p className="mx-auto max-w-[1100px] px-5 text-2xl leading-relaxed md:px-10 md:text-3xl lg:px-16">
+        Atendemos na <strong>Grande São Paulo, interior, litoral</strong> e outras localidades. Fale com nossa equipe sobre sua necessidade.
+      </p>
+    </aside>
+
+    <section id="contato" className="scroll-mt-10 bg-footer py-20 text-hero-foreground md:py-28">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10 lg:px-16">
         <span className="section-kicker text-signal">VAMOS CONVERSAR?</span>
         <h2 className="heading-display mx-auto mt-8 max-w-[950px] text-5xl sm:text-6xl lg:text-8xl">SEU PROJETO MERECE<br /><span className="text-signal">UMA SOLUÇÃO À ALTURA.</span></h2>
-        <p className="mx-auto mt-8 max-w-[720px] text-lg leading-relaxed text-hero-foreground/85 md:text-xl">Conte para nós o que você precisa fazer. Vamos entender sua demanda e encontrar a melhor solução.</p>
+        <p className="mx-auto mt-8 max-w-[720px] text-lg leading-relaxed text-hero-foreground/85 md:text-xl">Conte para nós o que você precisa içar. Vamos entender sua demanda e encontrar a melhor solução.</p>
         <Button asChild variant="hero" size="feature" className="mt-9 h-14 max-w-full px-5 text-sm sm:px-8 sm:text-base"><a href={WHATSAPP_URL} target="_blank" rel="noopener"><WhatsAppIcon className="h-5 w-5" /> CONVERSAR NO WHATSAPP <ArrowRight /></a></Button>
         <div className="mx-auto mt-16 grid max-w-[900px] text-left md:grid-cols-3">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal md:pr-6">
-            <WhatsAppIcon className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">PRINCIPAL DO WHATSAPP</span><span className="font-display text-2xl font-bold">(11) 91571-8147</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
+             <WhatsAppIcon className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">WHATSAPP PRINCIPAL</span><span className="font-display text-2xl font-bold">(11) 91571-8147</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
           </a>
           <a href={EMAIL_URL} className="group flex min-w-0 items-center gap-4 border-t border-hero-foreground/25 py-6 transition-colors hover:text-signal md:px-6">
             <Mail className="h-6 w-6 shrink-0 text-signal" /><span className="min-w-0"><span className="block text-xs font-bold uppercase text-signal">E-MAIL</span><span className="block break-all font-display text-xl font-bold">isaleicamentos@gmail.com</span></span><ArrowUpRight className="ml-auto h-5 w-5 shrink-0" />
@@ -141,14 +146,14 @@ function Index() {
         </div>
       </div>
     </section>
-    <footer className="bg-hero py-10 text-hero-foreground">
+    <footer className="bg-footer py-10 text-hero-foreground">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 md:flex-row md:items-end md:justify-between md:px-10 lg:px-16">
         <div><Brand /><p className="mt-5 text-xs text-hero-foreground/55">Soluções para seus móveis e objetos.</p></div>
         <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> WhatsApp principal — 11 91571-8147</a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
-          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><MessagesSquare size={14} /> Orçamentos — 11 94892-4855</a>
+          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><MessagesSquare size={14} /> Telefone alternativo — 11 94892-4855</a>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
         <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>
