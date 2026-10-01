@@ -11,5 +11,19 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    client: { base: "./" },
+    spa: {
+      enabled: true,
+      prerender: { enabled: true, outputPath: "/index.html" },
+    },
+    prerender: {
+      enabled: true,
+    },
+    pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index.html" } }],
   },
+  vite: {
+    base: "./",
+  },
+  // Hostinger is file-static: skip Nitro server bundle and prerender the SPA.
+  nitro: false,
 });
