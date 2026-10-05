@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, PackageCheck, Phone, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Armchair, Building2, Instagram, Mail, Menu, PackageCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoPng from "@/assets/isale-logo-240.png";
 import logoWebp from "@/assets/isale-logo-240.webp";
@@ -16,10 +16,10 @@ import facadeJpg480 from "@/assets/icamento-fachada-480.jpg";
 import facadeWebp480 from "@/assets/icamento-fachada-480.webp";
 import facadeJpg800 from "@/assets/icamento-fachada-800.jpg";
 import facadeWebp800 from "@/assets/icamento-fachada-800.webp";
-import glassJpg480 from "@/assets/icamento-fachada-vidro-480.jpg";
-import glassWebp480 from "@/assets/icamento-fachada-vidro-480.webp";
-import glassJpg800 from "@/assets/icamento-fachada-vidro-800.jpg";
-import glassWebp800 from "@/assets/icamento-fachada-vidro-800.webp";
+import sofaJpg480 from "@/assets/icamento-sofas-480.jpg";
+import sofaWebp480 from "@/assets/icamento-sofas-480.webp";
+import sofaJpg800 from "@/assets/icamento-sofas-800.jpg";
+import sofaWebp800 from "@/assets/icamento-sofas-800.webp";
 import pianoJpg480 from "@/assets/piano-cauda-480.jpg";
 import pianoWebp480 from "@/assets/piano-cauda-480.webp";
 import pianoJpg800 from "@/assets/piano-cauda-800.jpg";
@@ -31,7 +31,7 @@ import betweenWebp800 from "@/assets/icamento-andar-alto-800.webp";
 import ogImage from "@/assets/og-image.jpg";
 
 const WHATSAPP_URL = "https://wa.me/5511915718147?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20i%C3%A7amento.";
-const OTHER_PHONE_URL = "tel:+5511948924855";
+const OTHER_WHATSAPP_URL = "https://wa.me/5511948924855?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20i%C3%A7amento.";
 const EMAIL_URL = "mailto:isaleicamentos@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20-%20Isale%20I%C3%A7amentos";
 const INSTAGRAM_URL = "https://www.instagram.com/isaleicamentos/";
 
@@ -55,10 +55,10 @@ const heroVariants: ImgVariant[] = [
 ];
 
 const work: WorkItem[] = [
-  { variants: [{ webp: facadeWebp480, jpeg: facadeJpg480, w: 480 }, { webp: facadeWebp800, jpeg: facadeJpg800, w: 800 }], alt: "Piano de cauda protegido em gaiola de madeira, içado na fachada de edifício alto", title: "Içamento de piano", number: "01", detail: "Transporte especializado", width: 800, height: 1067 },
+  { variants: [{ webp: sofaWebp480, jpeg: sofaJpg480, w: 480 }, { webp: sofaWebp800, jpeg: sofaJpg800, w: 800 }], alt: "Sofá embalado sendo içado na fachada de um edifício", title: "Içamento de sofás e móveis", number: "01", detail: "Operações seguras", width: 800, height: 1067 },
   { variants: [{ webp: betweenWebp480, jpeg: betweenJpg480, w: 480 }, { webp: betweenWebp800, jpeg: betweenJpg800, w: 800 }], alt: "Carga suspensa entre edifícios durante operação de içamento", title: "Içamento em andar alto", number: "02", detail: "Precisão e cuidado", width: 800, height: 1067 },
   { variants: [{ webp: pianoWebp480, jpeg: pianoJpg480, w: 480 }, { webp: pianoWebp800, jpeg: pianoJpg800, w: 800 }], alt: "Piano de cauda Yamaha branco em ambiente interno", title: "Peças especiais", number: "03", detail: "Cuidado em cada detalhe", width: 800, height: 1067 },
-  { variants: [{ webp: glassWebp480, jpeg: glassJpg480, w: 480 }, { webp: glassWebp800, jpeg: glassJpg800, w: 800 }], alt: "Içamento de mármore na fachada envidraçada de edifício", title: "Içamento de mármore", number: "04", detail: "Operações externas", width: 800, height: 1067 },
+  { variants: [{ webp: facadeWebp480, jpeg: facadeJpg480, w: 480 }, { webp: facadeWebp800, jpeg: facadeJpg800, w: 800 }], alt: "SPA protegido em gaiola de madeira, içado na fachada de edifício alto", title: "Içamento de SPA", number: "04", detail: "Transporte especializado", width: 800, height: 1067 },
 ];
 
 function srcSetOf(variants: ImgVariant[], type: "webp" | "jpeg") {
@@ -250,13 +250,13 @@ function Index() {
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 md:flex-row md:items-end md:justify-between md:px-10 lg:px-16">
         <div><Brand /><p className="mt-5 text-xs text-hero-foreground/55">Soluções para seus móveis e objetos.</p></div>
         <div className="flex flex-col gap-3 text-xs font-semibold uppercase tracking-[.1em] text-hero-foreground/70">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> WhatsApp principal — 11 91571-8147</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 91571-8147 <span className="normal-case">(principal)</span></a>
           <a href={EMAIL_URL} className="inline-flex items-center gap-2 hover:text-signal"><Mail size={16} /> isaleicamentos@gmail.com</a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-signal"><Instagram size={16} /> @isaleicamentos</a>
-          <a href={OTHER_PHONE_URL} className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><Phone size={14} /> Telefone alternativo — 11 94892-4855</a>
+          <a href={OTHER_WHATSAPP_URL} target="_blank" rel="noopener" className="mt-2 inline-flex items-center gap-2 text-hero-foreground/45 hover:text-signal"><WhatsAppIcon className="h-4 w-4" /> 11 94892-4855</a>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-3">{nav.map(item => <a key={item.href} href={item.href} className="text-xs font-semibold uppercase text-hero-foreground/70 hover:text-signal">{item.label}</a>)}</div>
-        <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos.</span>
+        <span className="text-xs text-hero-foreground/45">© {new Date().getFullYear()} Isale Içamentos — CNPJ: 53.450.107/0001-06. Todos os direitos reservados.</span>
       </div>
     </footer>
   </main>;

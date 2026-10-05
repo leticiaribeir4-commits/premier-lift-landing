@@ -69,6 +69,13 @@ async function main() {
       webpQuality: 80,
       jpegQuality: 72,
     },
+    {
+      src: join(assets, "icamento-sofas.jpg"),
+      dest: (w) => join(assets, `icamento-sofas-${w}`),
+      widths: [480, 800],
+      webpQuality: 80,
+      jpegQuality: 72,
+    },
   ];
 
   for (const job of jobs) {
