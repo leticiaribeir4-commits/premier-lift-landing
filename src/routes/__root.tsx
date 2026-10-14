@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
     ],
     links: [
       {
@@ -88,6 +88,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.png`, type: "image/png" },
       { rel: "preload", href: barlow800, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: dmSans, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+    ],
+    scripts: [
+      {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=AW-11320469899",
+      },
+      {
+        children: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('js', new Date());
+gtag('config', 'AW-11320469899');
+window.gtag_report_conversion = function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-11320469899/ySudCPWB4uIYEIvTgpYq',
+    'event_callback': callback
+  });
+  return false;
+};`,
+      },
     ],
   }),
   shellComponent: RootShell,

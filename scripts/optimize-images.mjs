@@ -1,4 +1,4 @@
-import { mkdir, writeFile, stat } from "node:fs/promises";
+import { access, mkdir, writeFile, stat } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
@@ -9,14 +9,18 @@ const publicDir = join(root, "public");
 
 const kb = (n) => `${(n / 1024).toFixed(1)}KB`;
 
-async function encodePair(input, destBase, width, { webpQuality, jpegQuality }) {
+async function encodePair(input, destBase, width, { webpQuality, jpegQuality, flattenBackground, webpAlphaQuality }) {
   const pipeline = () =>
     sharp(input).rotate().resize({ width, withoutEnlargement: true });
 
-  const webpBuf = await pipeline()
-    .webp({ quality: webpQuality, effort: 6, smartSubsample: true })
-    .toBuffer();
-  const jpegBuf = await pipeline()
+  const webpOpts = { quality: webpQuality, effort: 6, smartSubsample: true };
+  if (webpAlphaQuality != null) webpOpts.alphaQuality = webpAlphaQuality;
+
+  const webpBuf = await pipeline().webp(webpOpts).toBuffer();
+  const jpegBuf = await (flattenBackground
+    ? pipeline().flatten({ background: flattenBackground })
+    : pipeline()
+  )
     .jpeg({ quality: jpegQuality, mozjpeg: true, progressive: true })
     .toBuffer();
 
@@ -28,6 +32,61 @@ async function encodePair(input, destBase, width, { webpQuality, jpegQuality }) 
   console.log(
     `  ${basename(destBase)} ${meta.width}x${meta.height}  webp ${kb(webpBuf.length)}  jpeg ${kb(jpegBuf.length)}`,
   );
+}
+
+async function extractCircularSeal(inputPath) {
+  const { data, info } = await sharp(inputPath).rotate().ensureAlpha().raw().toBuffer({
+    resolveWithObject: true,
+  });
+  const { width, height, channels } = info;
+
+  let minX = width;
+  let minY = height;
+  let maxX = 0;
+  let maxY = 0;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * channels;
+      const lum = 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+      if (data[i + 3] > 200 && lum > 18) {
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+
+  const pad = 2;
+  minX = Math.max(0, minX - pad);
+  minY = Math.max(0, minY - pad);
+  maxX = Math.min(width - 1, maxX + pad);
+  maxY = Math.min(height - 1, maxY + pad);
+
+  const cropW = maxX - minX + 1;
+  const cropH = maxY - minY + 1;
+  const size = Math.min(Math.max(cropW, cropH), width, height);
+  let left = minX - Math.floor((size - cropW) / 2);
+  let top = minY - Math.floor((size - cropH) / 2);
+  left = Math.max(0, Math.min(left, width - size));
+  top = Math.max(0, Math.min(top, height - size));
+
+  const cropped = await sharp(inputPath)
+    .rotate()
+    .ensureAlpha()
+    .extract({ left, top, width: size, height: size })
+    .toBuffer();
+
+  const r = size / 2 - 1;
+  const circle = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="white"/></svg>`,
+  );
+
+  return sharp(cropped)
+    .ensureAlpha()
+    .composite([{ input: circle, blend: "dest-in" }])
+    .png({ compressionLevel: 9 })
+    .toBuffer();
 }
 
 async function main() {
@@ -83,6 +142,33 @@ async function main() {
     for (const width of job.widths) {
       await encodePair(job.src, job.dest(width), width, job);
     }
+  }
+
+  const creaRaw = join(root, "..", "IMG_0727.PNG");
+  const creaPng = join(assets, "crea-sp.png");
+  let creaSrc = creaPng;
+  try {
+    await access(creaRaw);
+    const creaBuf = await extractCircularSeal(creaRaw);
+    await writeFile(creaPng, creaBuf);
+    const creaMeta = await sharp(creaBuf).metadata();
+    console.log(`crea-sp.png  ${creaMeta.width}x${creaMeta.height}  png ${kb(creaBuf.length)}`);
+    creaSrc = creaPng;
+  } catch (err) {
+    if (err && err.code === "ENOENT") {
+      await access(creaPng);
+      console.log("crea-sp.png  (usando versão já processada em src/assets)");
+    } else {
+      throw err;
+    }
+  }
+  for (const width of [240, 400]) {
+    await encodePair(creaSrc, join(assets, `crea-sp-${width}`), width, {
+      webpQuality: 80,
+      jpegQuality: 72,
+      flattenBackground: "#f9f8fa",
+      webpAlphaQuality: 90,
+    });
   }
 
   const logoSrc = join(assets, "isale-logo-original-transparent.png");
