@@ -20,7 +20,7 @@ import glassJpg480 from "@/assets/icamento-fachada-vidro-480.jpg";
 import glassWebp480 from "@/assets/icamento-fachada-vidro-480.webp";
 import glassJpg800 from "@/assets/icamento-fachada-vidro-800.jpg";
 import glassWebp800 from "@/assets/icamento-fachada-vidro-800.webp";
-import pianoJpg480 from "@/assets/piano-cauda-480.jpg";
+import pianoJpg480 from "@/assets/whatsappimage2026-10-29at22.08.46.jpeg";
 import pianoWebp480 from "@/assets/piano-cauda-480.webp";
 import pianoJpg800 from "@/assets/piano-cauda-800.jpg";
 import pianoWebp800 from "@/assets/piano-cauda-800.webp";
