@@ -97,43 +97,43 @@ async function main() {
       src: join(assets, "icamento-entre-predios.jpg"),
       dest: (w) => join(assets, `icamento-entre-predios-${w}`),
       widths: [480, 800, 1200, 1600],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 66,
+      jpegQuality: 62,
     },
     {
       src: join(assets, "icamento-fachada.jpg"),
       dest: (w) => join(assets, `icamento-fachada-${w}`),
       widths: [480, 800],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 72,
+      jpegQuality: 66,
     },
     {
       src: join(assets, "icamento-andar-alto.jpg"),
       dest: (w) => join(assets, `icamento-andar-alto-${w}`),
       widths: [480, 800],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 72,
+      jpegQuality: 66,
     },
     {
-      src: join(assets, "piano-cauda.jpg"),
-      dest: (w) => join(assets, `piano-cauda-${w}`),
+      src: join(assets, "icamento-palmeira.jpg"),
+      dest: (w) => join(assets, `icamento-palmeira-${w}`),
       widths: [480, 800],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 82,
+      jpegQuality: 78,
     },
     {
       src: join(assets, "icamento-fachada-vidro.jpg"),
       dest: (w) => join(assets, `icamento-fachada-vidro-${w}`),
       widths: [480, 800],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 72,
+      jpegQuality: 66,
     },
     {
       src: join(assets, "icamento-sofas.jpg"),
       dest: (w) => join(assets, `icamento-sofas-${w}`),
       widths: [480, 800],
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 72,
+      jpegQuality: 66,
     },
   ];
 
@@ -143,6 +143,34 @@ async function main() {
       await encodePair(job.src, job.dest(width), width, job);
     }
   }
+
+  const heroSrc = join(assets, "icamento-entre-predios.jpg");
+  const heroMeta = await sharp(heroSrc).metadata();
+  const boxW = 412;
+  const boxH = 760;
+  const posX = 0.52;
+  const posY = 0.5;
+  const scale = Math.max(boxW / heroMeta.width, boxH / heroMeta.height);
+  const visibleW = boxW / scale;
+  const visibleH = boxH / scale;
+  let left = posX * heroMeta.width - posX * visibleW;
+  let top = posY * heroMeta.height - posY * visibleH;
+  left = Math.max(0, Math.min(left, heroMeta.width - visibleW));
+  top = Math.max(0, Math.min(top, heroMeta.height - visibleH));
+  const crop = {
+    left: Math.max(0, Math.round(left)),
+    top: Math.max(0, Math.round(top)),
+    width: Math.round(visibleW),
+    height: Math.round(visibleH),
+  };
+  if (crop.left + crop.width > heroMeta.width) crop.width = heroMeta.width - crop.left;
+  if (crop.top + crop.height > heroMeta.height) crop.height = heroMeta.height - crop.top;
+  const mobileBase = () => sharp(heroSrc).rotate().extract(crop);
+  const mobileWebp = await mobileBase().webp({ quality: 70, effort: 6, smartSubsample: true }).toBuffer();
+  const mobileJpeg = await mobileBase().jpeg({ quality: 64, mozjpeg: true, progressive: true }).toBuffer();
+  await writeFile(join(assets, "icamento-entre-predios-mobile.webp"), mobileWebp);
+  await writeFile(join(assets, "icamento-entre-predios-mobile.jpg"), mobileJpeg);
+  console.log(`hero mobile crop ${crop.width}x${crop.height}  webp ${kb(mobileWebp.length)}  jpeg ${kb(mobileJpeg.length)}`);
 
   const creaRaw = join(root, "..", "IMG_0727.PNG");
   const creaPng = join(assets, "crea-sp.png");
@@ -164,8 +192,8 @@ async function main() {
   }
   for (const width of [240, 400]) {
     await encodePair(creaSrc, join(assets, `crea-sp-${width}`), width, {
-      webpQuality: 80,
-      jpegQuality: 72,
+      webpQuality: 72,
+      jpegQuality: 66,
       flattenBackground: "#f9f8fa",
       webpAlphaQuality: 90,
     });

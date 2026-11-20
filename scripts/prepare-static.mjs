@@ -26,5 +26,43 @@ html = Buffer.from(
     .replaceAll('"/./', '"./'),
 );
 
-writeFileSync(index, html);
+let text = html.toString("utf8");
+const imagePreloads = [];
+text = text.replace(/<link rel="preload" as="image"[^>]*>/g, (tag) => {
+  imagePreloads.push(tag);
+  return "";
+});
+const fontPreloads = [];
+text = text.replace(/<link rel="preload" href="[^"]+\.woff2"[^>]*>/g, (tag) => {
+  fontPreloads.push(tag);
+  return "";
+});
+text = text.replace(/<link rel="modulepreload"[^>]*>/g, "");
+
+const earlyHints = [...fontPreloads, ...imagePreloads].join("");
+const viewportMeta = text.match(/<meta name="viewport"[^>]*>/);
+if (viewportMeta && earlyHints) {
+  text = text.replace(viewportMeta[0], `${viewportMeta[0]}${earlyHints}`);
+} else if (earlyHints) {
+  text = text.replace("<head>", `<head>${earlyHints}`);
+}
+
+text = text.replace(
+  /<script type="module" async="" src="(\.\/assets\/[^"]+)"><\/script>/,
+  `<script>addEventListener("load",function(){var s=document.createElement("script");s.type="module";s.src="$1";document.body.appendChild(s)});</script>`,
+);
+
+writeFileSync(index, text);
+
+const sitemapPath = join(clientDir, "sitemap.xml");
+if (existsSync(sitemapPath)) {
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" });
+  const sitemap = readFileSync(sitemapPath, "utf8").replace(
+    /<lastmod>[^<]*<\/lastmod>/,
+    `<lastmod>${today}</lastmod>`,
+  );
+  writeFileSync(sitemapPath, sitemap);
+}
+const shellFile = join(clientDir, "_shell.html");
+if (existsSync(shellFile)) rmSync(shellFile);
 console.log(`Static HTML pronto: ${index}`);

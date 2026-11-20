@@ -1,13 +1,23 @@
 DirectoryIndex index.html index.htm
+ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
+  RewriteRule ^(sitemap\.xml|robots\.txt)$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule . - [R=404,L]
 </IfModule>
+
+<Files "sitemap.xml">
+  ForceType application/xml
+  <IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Content-Type "application/xml; charset=UTF-8"
+  </IfModule>
+</Files>
 
 <IfModule mod_headers.c>
   <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff2)$">

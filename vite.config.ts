@@ -12,17 +12,24 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     client: { base: "./" },
-    spa: {
-      enabled: true,
-      prerender: { enabled: true, outputPath: "/index.html" },
-    },
+    spa: { enabled: false },
     prerender: {
       enabled: true,
     },
-    pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index.html" } }],
+    pages: [{ path: "/", prerender: { enabled: true } }],
   },
   vite: {
     base: "./",
+    build: {
+      modulePreload: false,
+    },
+    environments: {
+      client: {
+        build: {
+          modulePreload: false,
+        },
+      },
+    },
   },
   // Hostinger is file-static: skip Nitro server bundle and prerender the SPA.
   nitro: false,

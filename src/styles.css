@@ -1,6 +1,6 @@
 @import "tailwindcss" source(none);
-@source "../src";
-@import "tw-animate-css";
+@source "../src/routes";
+@source "../src/components/ui/button.tsx";
 
 @font-face {
   font-family: "Barlow Condensed";
@@ -29,6 +29,30 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Métricas do Barlow Condensed 800 e do DM Sans sobre Liberation Sans/Arial,
+   para o título já nascer no tamanho final e a troca da fonte não atrasar o LCP. */
+@font-face {
+  font-family: "Barlow Condensed Fallback";
+  src: local("Arial"), local("Liberation Sans");
+  font-weight: 800;
+  font-style: normal;
+  size-adjust: 75.74%;
+  ascent-override: 145.84%;
+  descent-override: 124.61%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "DM Sans Fallback";
+  src: local("Arial"), local("Liberation Sans");
+  font-weight: 400 700;
+  font-style: normal;
+  size-adjust: 93.17%;
+  ascent-override: 117.62%;
+  descent-override: 157.04%;
+  line-gap-override: 0%;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -52,8 +76,8 @@
   --color-footer: var(--footer);
   --color-surface: var(--surface);
   --color-line: var(--line);
-  --font-display: "Barlow Condensed", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-display: "Barlow Condensed", "Barlow Condensed Fallback", sans-serif;
+  --font-body: "DM Sans", "DM Sans Fallback", sans-serif;
 }
 
 :root {
@@ -92,6 +116,26 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-body); }
   ::selection { background: var(--signal); color: var(--signal-foreground); }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--signal-foreground);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--signal);
+  }
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 50;
+    transform: translateY(-160%);
+    background: var(--signal);
+    color: var(--signal-foreground);
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .skip-link:focus { transform: none; }
 }
 
 @utility section-kicker {
